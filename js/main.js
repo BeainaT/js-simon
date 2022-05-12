@@ -1,24 +1,29 @@
 // Visualizzare in pagina 5 numeri casuali.
 // Creo array da popolare
 let randomNumbers = [];
-// Genero per 5 volte un numero casuale
-for (let i = 0; i < 5; i++) {
-    let number = Math.floor(Math.random() * 90) + 1;        
+// Genero per 5 volte un numero casuale che non si ripeta
+for (let i = randomNumbers.length; i < 5; i++) {
+    let number = Math.floor(Math.random() * 10) + 1;
+        if(!randomNumbers.includes(number)) {
         randomNumbers.push(number);
+        } else {
+            i = randomNumbers.length - 1;
+        }
 }
 
 console.log(randomNumbers);
 // stampo array in pagina
 let body = document.querySelector("#container");
 body.append(randomNumbers);
-let result = document.createElement("div");
-body.append(result);
+// let result = document.createElement("div");
+// body.append(result);
 let score = document.createElement("div");
 body.append(score);
 // Da lì parte un timer di 30 secondi.
 // Dopo 30 secondi l'utente deve inserire, uno alla volta, i numeri che ha visto precedentemente, tramite il prompt().
-let timer = 30000;
+let timer = 5000;
 let userArray = [];
+body.style.display ="none";
 setTimeout(function() {
     //eseguo 5 volte ciclo per chiedere all'utente di inserire un numero
     for( let i = 0; i < 5; i++) {
@@ -30,7 +35,7 @@ setTimeout(function() {
             //inserisco il suo numero in un array
             userArray.push(userNumber);
             //stampo il numero dell'utente
-            result.innerHTML = ("hai indovinato questi numeri" + " " + userArray);
+            document.write("hai indovinato questi numeri" + " " + userArray);
         }
     }
     //stampo la quantità di numeri inseriti, cioè i numeri indovinati
