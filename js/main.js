@@ -15,15 +15,19 @@ console.log(randomNumbers);
 // stampo array in pagina
 let body = document.querySelector("#container");
 body.append(randomNumbers);
-// let result = document.createElement("div");
-// body.append(result);
+let delay = document.querySelector(".result-box")
+let result = document.createElement("div");
+delay.append(result);
 let score = document.createElement("div");
-body.append(score);
+delay.append(score);
 // Da lì parte un timer di 30 secondi.
 // Dopo 30 secondi l'utente deve inserire, uno alla volta, i numeri che ha visto precedentemente, tramite il prompt().
-let timer = 5000;
+let timer = 30000;
+let view = 29000;
 let userArray = [];
-body.style.display ="none";
+setTimeout(function(){
+    body.style.display = "none";    
+}, view);
 setTimeout(function() {
     //eseguo 5 volte ciclo per chiedere all'utente di inserire un numero
     for( let i = 0; i < 5; i++) {
@@ -35,11 +39,12 @@ setTimeout(function() {
             //inserisco il suo numero in un array
             userArray.push(userNumber);
             //stampo il numero dell'utente
-            document.write("hai indovinato questi numeri" + " " + userArray);
+            result.innerHTML = ("numeri indovinati:" + " " + userArray);
         }
     }
     //stampo la quantità di numeri inseriti, cioè i numeri indovinati
     score.innerHTML += ("ne hai indovinati" + " " + userArray.length);
+    body.style.display = "block";
 }, timer);
 
 
