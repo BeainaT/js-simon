@@ -38,7 +38,7 @@ setTimeout(function () {
         console.log(userNumber);
         // Dopo che sono stati inseriti i 5 numeri, il software dice quanti e quali dei numeri da indovinare sono stati individuati
         //SE tra i numeri generati casualmente è presente il numero inserito dall'utente
-        if (randomNumbers.includes(userNumber)) {
+        if (randomNumbers.includes(userNumber) && !userArray.includes(userNumber)) {
             //inserisco il suo numero in un array
             userArray.push(userNumber);
             //stampo il numero dell'utente
